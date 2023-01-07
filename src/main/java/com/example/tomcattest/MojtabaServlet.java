@@ -1,16 +1,20 @@
 package com.example.tomcattest;
 
-import java.io.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+@WebServlet(name = "mojtabaServlet", value = "/mojtaba-servlet")
+public class MojtabaServlet extends HttpServlet {
+
     private String message;
 
     public void init() {
-        message = "Hello to everyone!";
+        message = "Hello. My name is Mojtaba!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -21,8 +25,11 @@ public class HelloServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + message + "</h1>");
         out.println("</body></html>");
+        out.flush();
+        out.close();
     }
 
     public void destroy() {
     }
+
 }
